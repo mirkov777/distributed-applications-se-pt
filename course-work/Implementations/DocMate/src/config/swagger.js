@@ -45,11 +45,10 @@ const swaggerConfig = swaggerJsdoc(swaggerOptions);
 const setupSwagger = (app) => {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
-  // TODO: figure out how to properly generate the api json
-  // app.get('/api/docs/json', (req, res) => {
-  //   res.setHeader('Content-Type', 'application/json');
-  //   res.send(swaggerConfig);
-  // });
+  app.get('/docs.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerConfig);
+  });
 };
 
 module.exports = setupSwagger;
